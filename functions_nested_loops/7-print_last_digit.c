@@ -2,9 +2,9 @@
 
 /**
  * print_last_digit - prints the last digit of a number
- * @n: the number to extract the last digit from
+ * @n: number to process
  *
- * Return: value of the last digit
+ * Return: last digit of n
  */
 int print_last_digit(int n)
 {
@@ -15,7 +15,7 @@ int print_last_digit(int n)
 
     last_digit = n % 10;
 
-    _putchar(last_digit + '0');
+    _putchar(last_digit + '0');  // convert digit to character
 
     return (last_digit);
 }
