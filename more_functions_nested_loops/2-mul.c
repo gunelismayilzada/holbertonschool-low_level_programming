@@ -1,4 +1,4 @@
- #include "main.h"
+#include "main.h"
 
 /**
  * Write a function that multiplies two integers.
