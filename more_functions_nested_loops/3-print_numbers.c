@@ -8,7 +8,7 @@ void print_numbers(void)
 {
     char c;
     for (c = 0; c <= 9; c++)
-        _putchar('0' + c);  // First use of _putchar (inside loop)
+        _putchar(c + '0');  // First use of _putchar (inside loop)
     _putchar('\n'); 
     
 }
