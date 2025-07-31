@@ -5,7 +5,6 @@
  * Prototype: int mul(int a, int b)
  */
 int mul(int a, int b)
- {
-int m=a*b;
-return(m);
- }
+{
+    return (a * b);
+}
