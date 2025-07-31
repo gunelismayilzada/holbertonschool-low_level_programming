@@ -6,10 +6,10 @@
  */
 void print_numbers(void)
 {
+    char i;
     for (int i = 0; i <= 9; i++)
     {
         _putchar('0' + i);  // First use of _putchar (inside loop)
+        _putchar('\n'); 
     }
-
-    _putchar('\n');  // Second use of _putchar
 }
