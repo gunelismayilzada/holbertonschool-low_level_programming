@@ -8,26 +8,34 @@
  */
 int _atoi(char *s)
 {
-	int i = 0, sign = 1, num = 0, started = 0;
+	int sign = 1;
+	unsigned int num = 0;
+	int started = 0;
 
-	while (s[i] != '\0')
+	while (*s)
 	{
-		if (s[i] == '-')
+		if (*s == '-')
 			sign = -sign;
-		else if (s[i] == '+')
+		else if (*s == '+')
 			;
-		else if (s[i] >= '0' && s[i] <= '9')
+		else if (*s >= '0' && *s <= '9')
 		{
 			started = 1;
-			num = num * 10 + (s[i] - '0');
+			num = num * 10 + (*s - '0');
 		}
 		else if (started)
 			break;
-		i++;
+		s++;
 	}
 
 	if (!started)
 		return (0);
 
-	return (sign * num);
+	if (sign < 0 && num > 2147483648U)
+		return (0); /* overflow safe-guard, optional */
+
+	if (sign < 0 && num == 2147483648U)
+		return (-2147483648);
+
+	return ((int)(sign * (int)num));
 }
