@@ -1,17 +1,20 @@
 #include "main.h"
 
 /**
- * puts2 - yazının hər ikinci simvolunu çap edir (0-dan başlayaraq)
- * @str: çap ediləcək yazı
+ * puts2 - Prints every other character of a string,
+ * starting with the first character, followed by a new line.
+ * @str: The input string
  */
 void puts2(char *str)
 {
-	int i = 0;
+	int i;
 
-	while (str[i] != '\0') /* yazının sonuna qədər get */
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		_putchar(str[i]); /* hər ikinci simvolu çap et */
-		i = i + 2; /* 2 addım irəli get */
+		if (i % 2 == 0)
+		{
+			_putchar(str[i]);
+		}
 	}
-	_putchar('\n'); /* sonda yeni sətrə keç */
+	_putchar('\n');
 }
