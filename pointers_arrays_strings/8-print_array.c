@@ -5,7 +5,8 @@
  * @a: array-in göstəricisi
  * @n: çap olunacaq element sayı
  *
- * Description: Array elementlərini vergül və boşluqla ayrılmış şəkildə çap edir
+ * Description: Array elementlərini vergül və boşluqla
+ * ayrılmış şəkildə çap edir
  */
 void print_array(int *a, int n)
 {
