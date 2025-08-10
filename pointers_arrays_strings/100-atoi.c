@@ -16,12 +16,12 @@ int _atoi(char *s)
 		if (s[i] == '-')
 			sign = -sign;
 		else if (s[i] == '+')
-			; /* sign unchanged */
+			; 
 		else if (s[i] >= '0' && s[i] <= '9')
 		{
 			started = 1;
 
-			/* Check for overflow before multiplying and adding */
+			
 			if (sign == 1)
 			{
 				if (num > (INT_MAX - (s[i] - '0')) / 10)
@@ -29,7 +29,7 @@ int _atoi(char *s)
 			}
 			else
 			{
-				/* INT_MIN = -2147483648, max magnitude is 2147483648 */
+				
 				if (num > ((unsigned)INT_MAX + 1 - (s[i] - '0')) / 10)
 					return (INT_MIN);
 			}
