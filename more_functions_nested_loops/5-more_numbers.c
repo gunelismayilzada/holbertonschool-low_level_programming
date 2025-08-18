@@ -19,3 +19,11 @@ void more_numbers(void)
 		_putchar('\n'); /* newline after each line */
 	}
 }
+
+
+int a[5][2] = {
+{1, 2}, 
+{3, 4}, 
+{5, 6}, 
+{7, 8},
+{9, 10}};
