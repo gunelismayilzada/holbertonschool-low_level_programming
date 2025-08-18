@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>  /* for NULL */
 
 /**
  * _strchr - Locates the first occurrence of a character in a string.
@@ -17,7 +18,7 @@ char *_strchr(char *s, char c)
         s++;
     }
 
-    // Check if c is the null terminator
+    /* Check if c is the null terminator */
     if (c == '\0')
         return (s);
 
