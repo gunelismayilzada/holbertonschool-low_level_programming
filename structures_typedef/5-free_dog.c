@@ -13,7 +13,5 @@ void free_dog(dog_t *d)
 	/* Free the dynamically allocated memory for the dog's name and owner */
 	free(d->name);
 	free(d->owner);
-
-	/* Finally, free the dog struct itself */
 	free(d);
 }
