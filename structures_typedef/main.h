@@ -1,8 +1,11 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef DOG_H
+#define DOG_H
 
-int _putchar(char c);
+/* Define a new type for the dog structure using typedef */
+typedef struct dog {
+    char *name;
+    float age;
+    char *owner;
+} dog_t;
 
-
- #endif
-
+#endif /* DOG_H */
