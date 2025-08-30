@@ -2,19 +2,19 @@
 #include "dog.h"
 
 /**
- * _strlen - returns length of string
+ * _strlen - returns the length of a string
  * @s: the string
  *
- * Return: length
+ * Return: length of string
  */
 int _strlen(char *s)
 {
-    int i = 0;
+	int i = 0;
 
-    while (s[i])
-        i++;
+	while (s[i])
+		i++;
 
-    return (i);
+	return (i);
 }
 
 /**
@@ -22,19 +22,19 @@ int _strlen(char *s)
  * @dest: destination
  * @src: source
  *
- * Return: pointer to dest
+ * Return: pointer to destination
  */
 char *_strcpy(char *dest, char *src)
 {
-    int i = 0;
+	int i = 0;
 
-    while (src[i])
-    {
-        dest[i] = src[i];
-        i++;
-    }
-    dest[i] = '\0';
-    return (dest);
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
 
 /**
@@ -43,39 +43,39 @@ char *_strcpy(char *dest, char *src)
  * @age: dog's age
  * @owner: dog's owner
  *
- * Return: pointer to new dog, or NULL if failure
+ * Return: pointer to the new dog or NULL on failure
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-    dog_t *d;
-    char *n, *o;
+	dog_t *d;
+	char *n, *o;
 
-    d = malloc(sizeof(dog_t));
-    if (d == NULL)
-        return (NULL);
+	d = malloc(sizeof(dog_t));
+	if (d == NULL)
+		return (NULL);
 
-    n = malloc(_strlen(name) + 1);
-    if (n == NULL)
-    {
-        free(d);
-        return (NULL);
-    }
+	n = malloc(_strlen(name) + 1);
+	if (n == NULL)
+	{
+		free(d);
+		return (NULL);
+	}
 
-    _strcpy(n, name);
+	_strcpy(n, name);
 
-    o = malloc(_strlen(owner) + 1);
-    if (o == NULL)
-    {
-        free(n);
-        free(d);
-        return (NULL);
-    }
+	o = malloc(_strlen(owner) + 1);
+	if (o == NULL)
+	{
+		free(n);
+		free(d);
+		return (NULL);
+	}
 
-    _strcpy(o, owner);
+	_strcpy(o, owner);
 
-    d->name = n;
-    d->age = age;
-    d->owner = o;
+	d->name = n;
+	d->age = age;
+	d->owner = o;
 
-    return (d);
+	return (d);
 }
