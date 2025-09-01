@@ -1,5 +1,5 @@
 #include "function_pointers.h"
-#include <stddef.h>  //  Required for NULL
+#include <stddef.h>  
 
 /**
  * print_name - Calls a function to print a name.
