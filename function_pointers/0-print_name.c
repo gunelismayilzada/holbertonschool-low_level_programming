@@ -1,5 +1,5 @@
 #include "function_pointers.h"
-#include <stddef.h>  
+#include <stddef.h> /* Required for NULL */
 
 /**
  * print_name - Calls a function to print a name.
@@ -8,6 +8,6 @@
  */
 void print_name(char *name, void (*f)(char *))
 {
-    if (name != NULL && f != NULL)
-        f(name);
+	if (name != NULL && f != NULL)
+		f(name);
 }
