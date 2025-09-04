@@ -1,27 +1,13 @@
-#include <stdio.h>
 #include "function_pointers.h"
+#include <stddef.h>  /* Required for NULL */
 
 /**
- * print_upper - Prints name in uppercase
- * @name: The name to print
+ * print_name - Calls a function to print a name.
+ * @name: The name to be printed.
+ * @f: A pointer to a function that takes a char * and returns void.
  */
-void print_upper(char *name)
+void print_name(char *name, void (*f)(char *))
 {
-	while (*name)
-	{
-		putchar(toupper(*name));
-		name++;
-	}
-	putchar('\n');
-}
-
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
-int main(void)
-{
-	print_name("Alice", print_upper);
-	return (0);
+	if (name != NULL && f != NULL)
+		f(name);
 }
