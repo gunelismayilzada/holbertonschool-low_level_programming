@@ -1,14 +1,12 @@
 #ifndef MAIN_H
 #define MAIN_H
-#include <fcntl.h>   /* open */
-#include <unistd.h>  /* read, write, close */
-#include <stdlib.h>  /* malloc, free */
-#include "main.h"
 
+#include <sys/types.h>  /* ssize_t için */
 
-#include <unistd.h>  /* For ssize_t */
-
+/* read_textfile fonksiyon prototipi */
 ssize_t read_textfile(const char *filename, size_t letters);
+
+/* _putchar fonksiyon prototipi */
 int _putchar(char c);
 
 #endif /* MAIN_H */
