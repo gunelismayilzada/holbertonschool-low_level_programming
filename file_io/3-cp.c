@@ -2,14 +2,15 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include "main.h"
 
 #define BUFFER_SIZE 1024
 
 /**
- * print_error_and_exit - Prints an error message to stderr and exits.
- * @code: The exit code.
- * @msg: The error message format string.
- * @arg: The argument for the format string.
+ * print_error_and_exit - prints error message to stderr and exits
+ * @code: exit code
+ * @msg: error message format
+ * @arg: argument for format
  */
 void print_error_and_exit(int code, const char *msg, const char *arg)
 {
@@ -18,11 +19,11 @@ void print_error_and_exit(int code, const char *msg, const char *arg)
 }
 
 /**
- * main - Copies the content of a file to another file.
- * @argc: Number of arguments.
- * @argv: Array of arguments.
+ * main - copies the content of a file to another file
+ * @argc: number of arguments
+ * @argv: arguments array
  *
- * Return: 0 on success.
+ * Return: 0 on success, otherwise exits with proper error code
  */
 int main(int argc, char *argv[])
 {
@@ -36,20 +37,17 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
-	/* Open the source file for reading */
 	fd_from = open(argv[1], O_RDONLY);
 	if (fd_from == -1)
 		print_error_and_exit(98, "Error: Can't read from file %s\n", argv[1]);
 
-	/* Open (or create) the destination file for writing, truncate if exists */
-	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	fd_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd_to == -1)
 	{
 		close(fd_from);
 		print_error_and_exit(99, "Error: Can't write to %s\n", argv[2]);
 	}
 
-	/* Copy the file contents in chunks */
 	while ((bytes_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
 		bytes_written = write(fd_to, buffer, bytes_read);
