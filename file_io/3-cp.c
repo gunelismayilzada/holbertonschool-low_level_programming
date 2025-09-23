@@ -7,10 +7,10 @@
 #define BUFFER_SIZE 1024
 
 /**
- * print_error_and_exit - prints error message to stderr and exits
- * @code: exit code
- * @msg: error message format
- * @arg: argument for format
+ * print_error_and_exit - Prints an error message and exits
+ * @code: Exit code
+ * @msg: Error message format
+ * @arg: File name to include in the error message
  */
 void print_error_and_exit(int code, const char *msg, const char *arg)
 {
@@ -19,11 +19,11 @@ void print_error_and_exit(int code, const char *msg, const char *arg)
 }
 
 /**
- * main - copies the content of a file to another file
- * @argc: number of arguments
- * @argv: arguments array
+ * main - Copies the contents of one file to another
+ * @argc: Argument count
+ * @argv: Argument vector
  *
- * Return: 0 on success, otherwise exits with proper error code
+ * Return: 0 on success, or exit with specific code on error
  */
 int main(int argc, char *argv[])
 {
@@ -48,8 +48,18 @@ int main(int argc, char *argv[])
 		print_error_and_exit(99, "Error: Can't write to %s\n", argv[2]);
 	}
 
-	while ((bytes_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
+	while (1)
 	{
+		bytes_read = read(fd_from, buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
+		{
+			close(fd_from);
+			close(fd_to);
+			print_error_and_exit(98, "Error: Can't read from file %s\n", argv[1]);
+		}
+		if (bytes_read == 0)
+			break;
+
 		bytes_written = write(fd_to, buffer, bytes_read);
 		if (bytes_written != bytes_read)
 		{
@@ -59,19 +69,11 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	if (bytes_read == -1)
-	{
-		close(fd_from);
-		close(fd_to);
-		print_error_and_exit(98, "Error: Can't read from file %s\n", argv[1]);
-	}
-
 	if (close(fd_from) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
 		exit(100);
 	}
-
 	if (close(fd_to) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
