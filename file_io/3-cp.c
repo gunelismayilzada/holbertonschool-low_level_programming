@@ -48,25 +48,22 @@ int main(int argc, char *argv[])
 		print_error_and_exit(99, "Error: Can't write to %s\n", argv[2]);
 	}
 
-	while (1)
+	while ((bytes_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
-		bytes_read = read(fd_from, buffer, BUFFER_SIZE);
-		if (bytes_read == -1)
-		{
-			close(fd_from);
-			close(fd_to);
-			print_error_and_exit(98, "Error: Can't read from file %s\n", argv[1]);
-		}
-		if (bytes_read == 0)
-			break;
-
 		bytes_written = write(fd_to, buffer, bytes_read);
-		if (bytes_written != bytes_read)
+		if (bytes_written == -1 || bytes_written != bytes_read)
 		{
 			close(fd_from);
 			close(fd_to);
 			print_error_and_exit(99, "Error: Can't write to %s\n", argv[2]);
 		}
+	}
+
+	if (bytes_read == -1)
+	{
+		close(fd_from);
+		close(fd_to);
+		print_error_and_exit(98, "Error: Can't read from file %s\n", argv[1]);
 	}
 
 	if (close(fd_from) == -1)
