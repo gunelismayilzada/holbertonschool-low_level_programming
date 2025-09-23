@@ -1,5 +1,10 @@
 #ifndef MAIN_H
 #define MAIN_H
+#include <fcntl.h>   /* open */
+#include <unistd.h>  /* read, write, close */
+#include <stdlib.h>  /* malloc, free */
+#include "main.h"
+
 
 #include <unistd.h>  /* For ssize_t */
 
