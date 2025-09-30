@@ -3,7 +3,8 @@
 #include "hash_tables.h"
 
 /**
- * _create_and_insert_node - Creates a new node and inserts it in the hash table.
+ * _create_and_insert_node - Creates a new node and inserts it
+ *                           in the hash table.
  * @ht: The hash table.
  * @key: The key string (non-NULL, non-empty).
  * @value: The value string (non-NULL).
@@ -40,12 +41,12 @@ int _create_and_insert_node(hash_table_t *ht, const char *key,
 }
 
 /**
- * hash_table_set - Adds or updates an element in a hash table
- * @hash_t: Pointer to the hash table
- * @key: The key (cannot be empty)
- * @value: Value associated with key (will be duplicated)
+ * hash_table_set - Adds or updates an element in a hash table.
+ * @hash_t: Pointer to the hash table.
+ * @key: The key (cannot be empty).
+ * @value: Value associated with key (will be duplicated).
  *
- * Return: 1 if success, 0 otherwise
+ * Return: 1 if success, 0 otherwise.
  */
 int hash_table_set(hash_table_t *hash_t, const char *key, const char *value)
 {
