@@ -25,12 +25,14 @@ int hash_table_set(hash_table_t *hash_t, const char *key, const char *value)
 
 	index = key_index((const unsigned char *)key, hash_t->size);
 	for (tmp = hash_t->array[index]; tmp; tmp = tmp->next)
+	{
 		if (strcmp(tmp->key, key) == 0)
 		{
 			free(tmp->value);
 			tmp->value = value_copy;
 			return (1);
 		}
+	}
 
 	node = malloc(sizeof(hash_node_t));
 	if (!node)
@@ -50,5 +52,6 @@ int hash_table_set(hash_table_t *hash_t, const char *key, const char *value)
 	node->value = value_copy;
 	node->next = hash_t->array[index];
 	hash_t->array[index] = node;
+
 	return (1);
 }
